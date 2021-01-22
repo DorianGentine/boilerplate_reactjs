@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.scss';
+// import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  // useParams
+} from "react-router-dom";
 
-function App() {
+import { Child } from "./components/children"
+
+export default function ParamsExample() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <h2>Accounts</h2>
+
+        <ul>
+          <li>
+            <Link to="/netflix">Netflix</Link>
+          </li>
+          <li>
+            <Link to="/zillow-group">Zillow Group</Link>
+          </li>
+          <li>
+            <Link to="/yahoo">Yahoo</Link>
+          </li>
+          <li>
+            <Link to="/modus-create">Modus Create</Link>
+          </li>
+        </ul>
+
+        <Switch>
+          <Route path="/:id" children={<Child />} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
-
-export default App;
